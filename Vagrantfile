@@ -8,7 +8,7 @@
 Vagrant.configure(2) do |config|
   #I'm using 14.04 because that's a supported Azure box and spark doesn't compile
   #  correctly on RHEL at the moment.
-  config.vm.box = "puphpet/ubuntu1404-x64"
+  config.vm.box = "hashicorp/precise64"
   #Run the spark playbook to test deployment.
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "spark.yml"
