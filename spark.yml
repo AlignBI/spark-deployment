@@ -3,6 +3,6 @@
   gather_facts: yes
   user: vagrant
   sudo: yes
-  #roles:
-  #  - common
+  roles:
+    - common
   #  - ssh

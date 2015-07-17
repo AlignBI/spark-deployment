@@ -1,0 +1,9 @@
+---
+- name: Refresh apt and upgrade any out of date packages.
+  apt:  update-cache=yes
+        upgrade=yes
+        cache_valid_time=86400
+
+- name: Require ntp
+  apt:  name=ntp
+        state=present
