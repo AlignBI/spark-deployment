@@ -1,9 +1,16 @@
 ---
-- name: Refresh apt and upgrade any out of date packages.
+- name: Upgrade any out of date apt packages.
   apt:  update-cache=yes
         upgrade=yes
         cache_valid_time=86400
+  when: ansible_os_family == "Debian"
 
-- name: Require ntp
-  apt:  name=ntp
+- name: Install common software via apt.
+  apt:  name={{ common_software }}
         state=present
+  when: ansible_os_family == "Debian"
+
+- name: Install common software via yum.
+  apt:  name={{ common_software }}
+        state=present
+  when: ansible_os_family == "RedHat"
