@@ -6,11 +6,13 @@
   when: ansible_os_family == "Debian"
 
 - name: Install common software via apt.
-  apt:  name={{ common_software }}
+  apt:  name={{ item }}
         state=present
   when: ansible_os_family == "Debian"
+  with_items:  common_software 
 
 - name: Install common software via yum.
-  apt:  name={{ common_software }}
+  apt:  name={{ item }}
         state=present
   when: ansible_os_family == "RedHat"
+  with_items:  common_software 
