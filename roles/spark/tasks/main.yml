@@ -6,7 +6,5 @@
        accept_hostkey=yes
 
 - name: Build Spark with maven
-  shell: mvn -DskipTests clean package
-  args: 
-    chdir: spark_directory  
+  shell: mvn -DskipTests clean package chdir={{ spark_directory }}  
 
