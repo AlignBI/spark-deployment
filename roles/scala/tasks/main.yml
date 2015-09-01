@@ -1,0 +1,18 @@
+---
+- name: Remove any version of scala that exists (Debian)
+  apt: name={{ item }}
+       state=absent
+  when: ansible_os_family == "Debian"
+  with_items: scala_packages
+
+- name: Download Scala (Debian)
+  shell: wget http://downloads.typesafe.com/scala/{{ scala_version}}/scala-{{ scala_version }}.deb
+  sudo: yes
+  when: ansible_os_family == "Debian"
+
+- name: Install scala via dpkg
+  shell: dpkg -i scala-{{ scala_version }}.deb 
+  sudo: yes
+  when: ansible_os_family == "Debian"
+
+

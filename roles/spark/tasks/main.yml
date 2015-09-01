@@ -1,0 +1,12 @@
+---
+- name: clone spark branch to build directory
+  git: repo=git://github.com/apache/spark.git 
+       version=branch-{{ spark_version }}
+       dest={{ spark_directory }}
+       accept_hostkey=yes
+
+- name: Build Spark with maven
+  shell: mvn -DskipTests clean package
+  args: 
+    chdir: {{ spark_directory }} 
+

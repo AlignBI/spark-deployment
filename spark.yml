@@ -1,8 +1,10 @@
 ---
-- hosts: spark-hosts
+- hosts: all
   gather_facts: yes
   user: vagrant
   sudo: yes
   roles:
     - common
     - java
+    - scala
+    - spark
